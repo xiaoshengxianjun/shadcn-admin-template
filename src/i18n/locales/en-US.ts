@@ -23,7 +23,8 @@ export const enUSMessages: Record<MessageKey, string> = {
   forgotPassword: 'Forgot password',
   login: 'Sign in',
   loggingIn: 'Signing in...',
-  loginSuccessHint: 'Demo mode: validation passed, ready for real auth API integration.',
+  loginSuccessHint: 'Demo mode: mock login connected (admin / 123456).',
+  loginFailed: 'Login failed, please check your account or password.',
   requireAccount: 'Please enter account',
   requirePassword: 'Please enter password',
   aiTagline: 'AI-First Admin Experience',
@@ -51,4 +52,5 @@ export const enUSMessages: Record<MessageKey, string> = {
   profile: 'Profile',
   accountSettings: 'Account settings',
   signOut: 'Sign out',
+  signingOut: 'Signing out...',
 }

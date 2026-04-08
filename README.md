@@ -52,12 +52,14 @@ npm run lint
 
 ## 可用脚本
 
-| 脚本 | 说明 |
-| --- | --- |
-| `npm run dev` | 启动本地开发服务 |
-| `npm run build` | TypeScript 构建检查并打包生产资源 |
-| `npm run preview` | 本地预览生产构建结果 |
-| `npm run lint` | 使用 ESLint 检查代码规范 |
+
+| 脚本                | 说明                     |
+| ----------------- | ---------------------- |
+| `npm run dev`     | 启动本地开发服务               |
+| `npm run build`   | TypeScript 构建检查并打包生产资源 |
+| `npm run preview` | 本地预览生产构建结果             |
+| `npm run lint`    | 使用 ESLint 检查代码规范       |
+
 
 ## 目录结构
 
@@ -113,4 +115,23 @@ npm run lint
 - 页面级业务逻辑优先放在页面文件附近，避免过早抽象。
 - 多语言文案统一通过 i18n key 管理，避免在页面中硬编码文本。
 - 主题色建议使用 CSS 变量和 Tailwind 原子类组合，保持风格一致。
+
+## API 与 Mock（登录/退出示例）
+
+项目已提供基础 API 管理与 mock 示例，目录如下：
+
+- `src/api/request.ts`：统一请求入口（基础 URL、统一响应、错误处理、mock 分发）
+- `src/api/modules/auth.ts`：登录/退出接口封装与 token 管理示例
+- `src/api/mock/auth.ts`：登录/退出 mock 处理器
+
+默认在开发环境启用 mock。你也可以通过环境变量控制：
+
+- `VITE_API_USE_MOCK=true`：强制启用 mock
+- `VITE_API_USE_MOCK=false`：关闭 mock，走真实后端接口
+- `VITE_API_BASE_URL=https://your-api-host.com`：设置后端服务地址
+
+登录 mock 账号示例：
+
+- 账号：`admin`
+- 密码：`123456`
 

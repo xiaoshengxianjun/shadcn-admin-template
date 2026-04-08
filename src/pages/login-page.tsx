@@ -1,8 +1,10 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import { Eye, EyeOff, Sparkles } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import type { FC } from 'react'
 
+import { authApi } from '@/api'
+import type { ApiError } from '@/api/types'
 import { LocaleSwitcher } from '@/components/locale-switcher'
 import { ThemeSwitcher } from '@/components/theme-switcher'
 import { Button } from '@/components/ui/button'
@@ -14,11 +16,24 @@ import type { PageRouteMeta } from '@/types/route'
 
 type PageComponent = FC & { routeMeta: PageRouteMeta }
 
+type LoginRouteState = {
+  redirectTo?: string
+}
+
+function resolveRedirectPath(redirectTo: string | undefined, fallbackPath: string) {
+  if (!redirectTo || !redirectTo.startsWith('/') || redirectTo.startsWith('//')) {
+    return fallbackPath
+  }
+  return redirectTo
+}
+
 const LoginPage: PageComponent = () => {
   const { t } = useLocale()
   const navigate = useNavigate()
+  const location = useLocation()
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [form, setForm] = useState({
     account: '',
     password: '',
@@ -35,16 +50,32 @@ const LoginPage: PageComponent = () => {
   }, [form.account, form.password, submitAttempted, t])
 
   const hasError = Boolean(errors.account || errors.password)
+  const redirectPath = resolveRedirectPath(
+    (location.state as LoginRouteState | null)?.redirectTo,
+    '/'
+  )
 
-  const onSubmit = (event: FormEvent) => {
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault()
     setSubmitAttempted(true)
     if (!form.account.trim() || !form.password.trim()) return
+
+    setSubmitError('')
     setLoading(true)
-    window.setTimeout(() => {
+
+    try {
+      await authApi.login({
+        account: form.account.trim(),
+        password: form.password,
+        remember: form.remember,
+      })
+      navigate(redirectPath, { replace: true })
+    } catch (error) {
+      const message = (error as ApiError).message || t('loginFailed')
+      setSubmitError(message)
+    } finally {
       setLoading(false)
-      navigate('/')
-    }, 600)
+    }
   }
 
   return (
@@ -177,6 +208,10 @@ const LoginPage: PageComponent = () => {
                   <Button className="w-full" type="submit" disabled={loading}>
                     {loading ? t('loggingIn') : t('login')}
                   </Button>
+
+                  {submitError ? (
+                    <p className="text-center text-xs text-[hsl(var(--destructive))]">{submitError}</p>
+                  ) : null}
 
                   {submitAttempted && !hasError && !loading ? (
                     <p className="text-center text-xs text-[hsl(var(--muted-foreground))]">

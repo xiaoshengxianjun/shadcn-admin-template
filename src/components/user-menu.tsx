@@ -1,12 +1,27 @@
 import { useState } from 'react'
 import { ChevronDown, LogOut, Settings, User } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
+import { authApi } from '@/api'
 import { useLocale } from '@/hooks/use-locale'
 import { Button } from '@/components/ui/button'
 
 export function UserMenu() {
   const [open, setOpen] = useState(false)
+  const [logoutLoading, setLogoutLoading] = useState(false)
   const { t } = useLocale()
+  const navigate = useNavigate()
+
+  const onLogout = async () => {
+    setLogoutLoading(true)
+    try {
+      await authApi.logout()
+      navigate('/login')
+    } finally {
+      setLogoutLoading(false)
+      setOpen(false)
+    }
+  }
 
   return (
     <div className="relative">
@@ -37,9 +52,13 @@ export function UserMenu() {
             <Settings className="h-4 w-4" />
             {t('accountSettings')}
           </button>
-          <button className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-[hsl(var(--destructive))] hover:bg-[hsl(var(--secondary))]">
+          <button
+            className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-[hsl(var(--destructive))] hover:bg-[hsl(var(--secondary))] disabled:opacity-60"
+            onClick={onLogout}
+            disabled={logoutLoading}
+          >
             <LogOut className="h-4 w-4" />
-            {t('signOut')}
+            {logoutLoading ? t('signingOut') : t('signOut')}
           </button>
         </div>
       ) : null}

@@ -19,7 +19,8 @@ export const zhCNMessages = {
   forgotPassword: '忘记密码',
   login: '登录',
   loggingIn: '登录中...',
-  loginSuccessHint: '演示模式：表单校验通过，可接入真实登录接口',
+  loginSuccessHint: '演示模式：已接入 mock 登录接口（admin / 123456）',
+  loginFailed: '登录失败，请检查账号或密码',
   requireAccount: '请输入账号',
   requirePassword: '请输入密码',
   aiTagline: 'AI-First Admin Experience',
@@ -45,4 +46,5 @@ export const zhCNMessages = {
   profile: '个人中心',
   accountSettings: '账户设置',
   signOut: '退出登录',
+  signingOut: '退出中...',
 } as const
