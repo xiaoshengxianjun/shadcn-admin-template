@@ -1,0 +1,287 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+:root {
+  --background: 220 35% 98%;
+  --foreground: 224 36% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 224 36% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 36% 11%;
+  --primary: 222 89% 56%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 24% 94%;
+  --secondary-foreground: 224 36% 11%;
+  --muted: 220 20% 92%;
+  --muted-foreground: 223 14% 45%;
+  --accent: 199 89% 62%;
+  --accent-foreground: 224 36% 11%;
+  --border: 220 20% 88%;
+  --input: 220 20% 84%;
+  --ring: 222 89% 56%;
+  --destructive: 0 78% 57%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+.dark {
+  --background: 224 42% 8%;
+  --foreground: 216 20% 96%;
+  --card: 224 36% 12%;
+  --card-foreground: 216 20% 96%;
+  --popover: 224 36% 12%;
+  --popover-foreground: 216 20% 96%;
+  --primary: 221 88% 62%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 223 26% 18%;
+  --secondary-foreground: 216 20% 96%;
+  --muted: 223 24% 18%;
+  --muted-foreground: 217 12% 70%;
+  --accent: 196 89% 60%;
+  --accent-foreground: 0 0% 100%;
+  --border: 223 24% 20%;
+  --input: 223 24% 24%;
+  --ring: 221 88% 62%;
+  --destructive: 0 68% 52%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+.deep-violet {
+  --background: 264 44% 9%;
+  --foreground: 270 20% 95%;
+  --card: 264 36% 14%;
+  --card-foreground: 270 20% 95%;
+  --popover: 264 36% 14%;
+  --popover-foreground: 270 20% 95%;
+  --primary: 274 92% 68%;
+  --primary-foreground: 264 44% 9%;
+  --secondary: 263 28% 21%;
+  --secondary-foreground: 270 20% 95%;
+  --muted: 263 28% 21%;
+  --muted-foreground: 267 15% 72%;
+  --accent: 304 76% 64%;
+  --accent-foreground: 264 44% 9%;
+  --border: 263 24% 24%;
+  --input: 263 22% 26%;
+  --ring: 274 92% 68%;
+  --destructive: 0 72% 56%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+.deep-green {
+  --background: 164 58% 8%;
+  --foreground: 156 22% 96%;
+  --card: 164 48% 12%;
+  --card-foreground: 156 22% 96%;
+  --popover: 164 48% 12%;
+  --popover-foreground: 156 22% 96%;
+  --primary: 162 72% 48%;
+  --primary-foreground: 165 59% 8%;
+  --secondary: 164 34% 20%;
+  --secondary-foreground: 156 22% 96%;
+  --muted: 164 34% 20%;
+  --muted-foreground: 156 14% 70%;
+  --accent: 182 70% 52%;
+  --accent-foreground: 165 59% 8%;
+  --border: 164 32% 23%;
+  --input: 164 30% 25%;
+  --ring: 162 72% 48%;
+  --destructive: 3 72% 58%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+.peach-light {
+  --background: 350 78% 97%;
+  --foreground: 332 36% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 332 36% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 332 36% 18%;
+  --primary: 343 82% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 350 44% 91%;
+  --secondary-foreground: 332 36% 18%;
+  --muted: 350 36% 88%;
+  --muted-foreground: 336 20% 42%;
+  --accent: 16 88% 63%;
+  --accent-foreground: 0 0% 100%;
+  --border: 346 34% 83%;
+  --input: 346 32% 80%;
+  --ring: 343 82% 60%;
+  --destructive: 0 72% 56%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+.warm-yellow {
+  --background: 45 90% 94%;
+  --foreground: 34 56% 16%;
+  --card: 0 0% 100%;
+  --card-foreground: 34 56% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 34 56% 16%;
+  --primary: 44 95% 46%;
+  --primary-foreground: 34 56% 16%;
+  --secondary: 44 72% 86%;
+  --secondary-foreground: 34 56% 16%;
+  --muted: 44 58% 82%;
+  --muted-foreground: 36 30% 34%;
+  --accent: 25 90% 52%;
+  --accent-foreground: 0 0% 100%;
+  --border: 42 46% 73%;
+  --input: 42 44% 70%;
+  --ring: 44 95% 46%;
+  --destructive: 0 72% 56%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+@keyframes gradient-float-a {
+  0% {
+    transform: translate3d(-10%, 4%, 0) scale(0.96);
+    opacity: 0.34;
+  }
+  50% {
+    transform: translate3d(10%, -9%, 0) scale(1.15);
+    opacity: 0.72;
+  }
+  100% {
+    transform: translate3d(-10%, 4%, 0) scale(0.96);
+    opacity: 0.34;
+  }
+}
+
+@keyframes gradient-float-b {
+  0% {
+    transform: translate3d(8%, 8%, 0) scale(0.95);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(-12%, -5%, 0) scale(1.18);
+    opacity: 0.66;
+  }
+  100% {
+    transform: translate3d(8%, 8%, 0) scale(0.95);
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+@keyframes gradient-pulse {
+  0% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.48;
+    transform: translate3d(0, -3%, 0) scale(1.08);
+  }
+  100% {
+    opacity: 0.22;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes page-gradient-shift {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      0% 50%;
+  }
+  50% {
+    background-position:
+      100% 100%,
+      0% 100%,
+      100% 50%;
+  }
+  100% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      0% 50%;
+  }
+}
+
+.login-page-background {
+  background-color: hsl(var(--background));
+  background-image:
+    radial-gradient(circle at 12% 18%, hsl(var(--primary) / 0.16), transparent 45%),
+    radial-gradient(circle at 88% 72%, hsl(var(--accent) / 0.14), transparent 42%),
+    linear-gradient(
+      135deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--primary) / 0.06) 45%,
+      hsl(var(--accent) / 0.1) 100%
+    );
+  background-size:
+    170% 170%,
+    170% 170%,
+    180% 180%;
+  animation: page-gradient-shift 12s ease-in-out infinite;
+}
+
+.login-gradient-flow {
+  background-size: 175% 175%;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+
+.login-gradient-orb-a {
+  animation: gradient-float-a 7.5s ease-in-out infinite;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+
+.login-gradient-orb-b {
+  animation: gradient-float-b 9s ease-in-out infinite;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+
+.login-gradient-pulse {
+  animation: gradient-pulse 6.8s ease-in-out infinite;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-page-background,
+  .login-gradient-flow,
+  .login-gradient-orb-a,
+  .login-gradient-orb-b,
+  .login-gradient-pulse {
+    animation: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
