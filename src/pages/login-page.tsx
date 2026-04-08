@@ -49,10 +49,11 @@ const LoginPage: PageComponent = () => {
 
   return (
     <div className="login-page-background relative min-h-screen overflow-hidden">
+      <div className="login-river-overlay pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="login-gradient-orb-a absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-[hsl(var(--primary)/0.35)] blur-3xl" />
         <div className="login-gradient-orb-b absolute right-1/4 bottom-0 h-96 w-96 rounded-full bg-[hsl(var(--accent)/0.3)] blur-3xl" />
-        <div className="login-gradient-pulse absolute top-1/2 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--primary)/0.28),transparent_65%)] blur-3xl" />
+        <div className="login-gradient-pulse absolute top-1/2 left-1/2 h-112 w-md -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--primary)/0.28),transparent_65%)] blur-3xl" />
       </div>
 
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6">
@@ -62,7 +63,7 @@ const LoginPage: PageComponent = () => {
         </div>
 
         <div className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-2">
-          <section className="login-gradient-flow relative hidden h-full min-h-[540px] overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[linear-gradient(140deg,hsl(var(--background))_8%,hsl(var(--primary)/0.18)_48%,hsl(var(--accent)/0.28)_100%)] p-10 lg:flex lg:flex-col lg:justify-between">
+          <section className="login-gradient-flow relative hidden h-full min-h-[540px] overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[linear-gradient(140deg,hsl(var(--background))_4%,hsl(var(--primary)/0.2)_44%,hsl(var(--accent)/0.3)_100%)] p-10 lg:flex lg:flex-col lg:justify-between">
             <div className="login-gradient-pulse absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,hsl(var(--primary)/0.34),transparent_42%),radial-gradient(circle_at_82%_76%,hsl(var(--accent)/0.3),transparent_46%)]" />
             <div className="relative">
               <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] px-4 py-2 text-sm text-[hsl(var(--muted-foreground))] backdrop-blur">
@@ -70,8 +71,16 @@ const LoginPage: PageComponent = () => {
                 {t('aiTagline')}
               </div>
             </div>
+            <div className="pointer-events-none absolute inset-x-8 top-24 bottom-44 perspective-distant">
+              <div className="login-3d-core absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-[2.2rem]" />
+              <div className="login-3d-ring login-3d-ring-1 absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--primary)/0.44)]" />
+              <div className="login-3d-ring login-3d-ring-2 absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--accent)/0.38)]" />
+              <div className="login-3d-card login-3d-card-a absolute top-[18%] left-[12%] h-30 w-40 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.62)] backdrop-blur-xl" />
+              <div className="login-3d-card login-3d-card-b absolute right-[10%] bottom-[14%] h-24 w-36 rounded-2xl border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.56)] backdrop-blur-xl" />
+              <div className="login-3d-grid absolute inset-0 rounded-3xl" />
+            </div>
             <div className="relative space-y-4">
-              <h1 className="text-5xl leading-tight font-semibold tracking-tight text-[hsl(var(--foreground))]">
+              <h1 className="text-4xl leading-tight font-semibold tracking-tight text-[hsl(var(--foreground))]">
                 {t('appName')}
               </h1>
               <p className="max-w-xl text-base text-[hsl(var(--muted-foreground))]">
@@ -80,7 +89,15 @@ const LoginPage: PageComponent = () => {
             </div>
           </section>
 
-          <section className="mx-auto w-full max-w-md">
+          <section className="mx-auto w-full max-w-md space-y-4">
+            <div className="text-center">
+              <p className="text-3xl font-semibold tracking-tight text-[hsl(var(--foreground))]">
+                {t('appName')}
+              </p>
+              <p className="mt-1 text-sm text-[hsl(var(--muted-foreground))]">
+                通用管理系统基础模板
+              </p>
+            </div>
             <Card className="border-[hsl(var(--border))] bg-[hsl(var(--card)/0.85)] backdrop-blur">
               <CardHeader>
                 <CardTitle className="text-2xl">{t('welcomeBack')}</CardTitle>

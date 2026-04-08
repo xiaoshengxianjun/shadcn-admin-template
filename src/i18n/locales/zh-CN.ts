@@ -1,5 +1,5 @@
 export const zhCNMessages = {
-  appName: 'shadcn-admin-template',
+  appName: 'Shadcn Admin Template',
   menuDashboard: '首页',
   menuUsers: '用户管理',
   menuRoles: '角色权限',

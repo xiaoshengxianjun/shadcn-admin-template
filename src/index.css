@@ -193,48 +193,154 @@
   }
 }
 
-@keyframes page-gradient-shift {
+@keyframes liquid-drift-a {
   0% {
-    background-position:
-      0% 0%,
-      100% 0%,
-      0% 50%;
+    transform: translate3d(-14%, -8%, 0) rotate(-4deg) scale(1.04);
+    opacity: 0.56;
   }
   50% {
-    background-position:
-      100% 100%,
-      0% 100%,
-      100% 50%;
+    transform: translate3d(10%, 6%, 0) rotate(6deg) scale(1.16);
+    opacity: 0.8;
   }
   100% {
-    background-position:
-      0% 0%,
-      100% 0%,
-      0% 50%;
+    transform: translate3d(-8%, 12%, 0) rotate(2deg) scale(1.08);
+    opacity: 0.62;
+  }
+}
+
+@keyframes liquid-drift-b {
+  0% {
+    transform: translate3d(14%, -12%, 0) rotate(0deg) scale(1.1);
+    opacity: 0.32;
+  }
+  50% {
+    transform: translate3d(-16%, 8%, 0) rotate(8deg) scale(1.2);
+    opacity: 0.54;
+  }
+  100% {
+    transform: translate3d(8%, 14%, 0) rotate(-6deg) scale(1.12);
+    opacity: 0.36;
+  }
+}
+
+@keyframes liquid-sheen {
+  0% {
+    transform: translate3d(-10%, -4%, 0) skewX(-4deg);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate3d(12%, 2%, 0) skewX(4deg);
+    opacity: 0.36;
+  }
+  100% {
+    transform: translate3d(-8%, 3%, 0) skewX(-2deg);
+    opacity: 0.24;
+  }
+}
+
+@keyframes tech-ring-spin {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotateX(68deg) rotateZ(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotateX(68deg) rotateZ(360deg);
+  }
+}
+
+@keyframes tech-card-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate3d(1, 1, 0, 10deg);
+  }
+  50% {
+    transform: translate3d(0, -12px, 20px) rotate3d(1, 1, 0, 20deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate3d(1, 1, 0, 10deg);
+  }
+}
+
+@keyframes tech-core-pulse {
+  0% {
+    transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 0, 24deg) scale(0.95);
+    box-shadow:
+      0 0 0 0 hsl(var(--primary) / 0.2),
+      0 22px 48px hsl(var(--primary) / 0.2);
+  }
+  50% {
+    transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 0, 24deg) scale(1.06);
+    box-shadow:
+      0 0 0 14px hsl(var(--accent) / 0.08),
+      0 28px 56px hsl(var(--accent) / 0.28);
+  }
+  100% {
+    transform: translate3d(-50%, -50%, 0) rotate3d(1, 1, 0, 24deg) scale(0.95);
+    box-shadow:
+      0 0 0 0 hsl(var(--primary) / 0.2),
+      0 22px 48px hsl(var(--primary) / 0.2);
   }
 }
 
 .login-page-background {
   background-color: hsl(var(--background));
+  background-image: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--primary) / 0.12) 44%,
+    hsl(var(--accent) / 0.12) 100%
+  );
+  isolation: isolate;
+}
+
+.login-river-overlay {
+  overflow: hidden;
+  z-index: 0;
+}
+
+.login-river-overlay::before,
+.login-river-overlay::after {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.login-river-overlay::before {
   background-image:
-    radial-gradient(circle at 12% 18%, hsl(var(--primary) / 0.16), transparent 45%),
-    radial-gradient(circle at 88% 72%, hsl(var(--accent) / 0.14), transparent 42%),
+    radial-gradient(ellipse at 16% 28%, hsl(var(--primary) / 0.4), transparent 52%),
+    radial-gradient(ellipse at 82% 72%, hsl(var(--accent) / 0.36), transparent 52%),
+    radial-gradient(ellipse at 48% 52%, hsl(var(--primary) / 0.2), transparent 58%);
+  mix-blend-mode: screen;
+  filter: blur(8px) saturate(118%);
+  animation: liquid-drift-a 16s cubic-bezier(0.37, 0, 0.2, 1) infinite alternate;
+}
+
+.login-river-overlay::after {
+  background-image:
+    conic-gradient(
+      from 120deg at 50% 50%,
+      transparent 0deg,
+      hsl(var(--accent) / 0.16) 72deg,
+      hsl(var(--primary) / 0.2) 162deg,
+      transparent 260deg
+    ),
     linear-gradient(
-      135deg,
-      hsl(var(--background)) 0%,
-      hsl(var(--primary) / 0.06) 45%,
-      hsl(var(--accent) / 0.1) 100%
+      114deg,
+      transparent 18%,
+      hsl(var(--primary) / 0.14) 40%,
+      hsl(var(--accent) / 0.14) 58%,
+      transparent 78%
     );
-  background-size:
-    170% 170%,
-    170% 170%,
-    180% 180%;
-  animation: page-gradient-shift 12s ease-in-out infinite;
+  mix-blend-mode: soft-light;
+  filter: blur(12px);
+  animation:
+    liquid-drift-b 22s linear infinite,
+    liquid-sheen 9s ease-in-out infinite;
 }
 
 .login-gradient-flow {
-  background-size: 175% 175%;
-  animation: gradient-shift 8s ease-in-out infinite;
+  background-size: 220% 220%;
+  animation: gradient-shift 6.4s ease-in-out infinite;
 }
 
 .login-gradient-orb-a {
@@ -255,12 +361,69 @@
   mix-blend-mode: screen;
 }
 
+.login-3d-core {
+  background: linear-gradient(
+    140deg,
+    hsl(var(--primary) / 0.72) 6%,
+    hsl(var(--accent) / 0.66) 56%,
+    hsl(var(--primary) / 0.58) 100%
+  );
+  border: 1px solid hsl(var(--border));
+  animation: tech-core-pulse 5.2s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.login-3d-ring {
+  transform-style: preserve-3d;
+  box-shadow: 0 0 28px hsl(var(--primary) / 0.16);
+}
+
+.login-3d-ring-1 {
+  animation: tech-ring-spin 12s linear infinite;
+}
+
+.login-3d-ring-2 {
+  animation: tech-ring-spin 16s linear infinite reverse;
+}
+
+.login-3d-card {
+  transform-style: preserve-3d;
+  box-shadow:
+    0 16px 40px hsl(var(--primary) / 0.14),
+    inset 0 1px 0 hsl(var(--foreground) / 0.08);
+}
+
+.login-3d-card-a {
+  animation: tech-card-float 6.2s ease-in-out infinite;
+}
+
+.login-3d-card-b {
+  animation: tech-card-float 7.2s ease-in-out infinite reverse;
+}
+
+.login-3d-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 50%, black 28%, transparent 88%);
+  opacity: 0.36;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .login-page-background,
+  .login-river-overlay,
+  .login-river-overlay::before,
+  .login-river-overlay::after,
   .login-gradient-flow,
   .login-gradient-orb-a,
   .login-gradient-orb-b,
-  .login-gradient-pulse {
+  .login-gradient-pulse,
+  .login-3d-core,
+  .login-3d-ring-1,
+  .login-3d-ring-2,
+  .login-3d-card-a,
+  .login-3d-card-b {
     animation: none;
   }
 }

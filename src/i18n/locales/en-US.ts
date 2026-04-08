@@ -3,7 +3,7 @@ import type { zhCNMessages } from '@/i18n/locales/zh-CN'
 type MessageKey = keyof typeof zhCNMessages
 
 export const enUSMessages: Record<MessageKey, string> = {
-  appName: 'shadcn-admin-template',
+  appName: 'Shadcn Admin Template',
   menuDashboard: 'Dashboard',
   menuUsers: 'Users',
   menuRoles: 'Roles & Permissions',
