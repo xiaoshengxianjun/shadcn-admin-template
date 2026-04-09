@@ -37,7 +37,6 @@ export function UserMenu() {
         </span>
         <div className="hidden text-left md:block">
           <p className="text-sm leading-tight">{t('userName')}</p>
-          <p className="text-xs leading-tight text-[hsl(var(--muted-foreground))]">{t('userEmail')}</p>
         </div>
         <ChevronDown className="h-4 w-4 text-[hsl(var(--muted-foreground))]" />
       </Button>

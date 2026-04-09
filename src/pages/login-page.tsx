@@ -1,5 +1,5 @@
 import { useMemo, useState, type FormEvent } from 'react'
-import { Eye, EyeOff, Sparkles } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import type { FC } from 'react'
 
@@ -80,7 +80,6 @@ const LoginPage: PageComponent = () => {
 
   return (
     <div className="login-page-background relative min-h-screen overflow-hidden">
-      <div className="login-river-overlay pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <div className="login-gradient-orb-a absolute -top-24 left-1/4 h-80 w-80 rounded-full bg-[hsl(var(--primary)/0.35)] blur-3xl" />
         <div className="login-gradient-orb-b absolute right-1/4 bottom-0 h-96 w-96 rounded-full bg-[hsl(var(--accent)/0.3)] blur-3xl" />
@@ -96,12 +95,6 @@ const LoginPage: PageComponent = () => {
         <div className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-2">
           <section className="login-gradient-flow relative hidden h-full min-h-[540px] overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[linear-gradient(140deg,hsl(var(--background))_4%,hsl(var(--primary)/0.2)_44%,hsl(var(--accent)/0.3)_100%)] p-10 lg:flex lg:flex-col lg:justify-between">
             <div className="login-gradient-pulse absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,hsl(var(--primary)/0.34),transparent_42%),radial-gradient(circle_at_82%_76%,hsl(var(--accent)/0.3),transparent_46%)]" />
-            <div className="relative">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[hsl(var(--border))] bg-[hsl(var(--card)/0.75)] px-4 py-2 text-sm text-[hsl(var(--muted-foreground))] backdrop-blur">
-                <Sparkles className="h-4 w-4 text-[hsl(var(--primary))]" />
-                {t('aiTagline')}
-              </div>
-            </div>
             <div className="pointer-events-none absolute inset-x-8 top-24 bottom-44 perspective-distant">
               <div className="login-3d-core absolute top-1/2 left-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-[2.2rem]" />
               <div className="login-3d-ring login-3d-ring-1 absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[hsl(var(--primary)/0.44)]" />

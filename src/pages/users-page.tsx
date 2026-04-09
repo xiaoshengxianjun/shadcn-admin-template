@@ -26,6 +26,7 @@ UsersPage.routeMeta = {
   titleKey: 'menuUsers',
   layout: 'dashboard',
   inMenu: true,
+  menuGroupKey: 'menuPermission',
   order: 2,
   icon: 'Users',
 }

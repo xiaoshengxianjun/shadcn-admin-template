@@ -9,6 +9,7 @@ export type PageRouteMeta = {
   titleKey: MessageKey
   layout: RouteLayout
   inMenu?: boolean
+  menuGroupKey?: MessageKey
   order?: number
   icon?: RouteIconName
 }

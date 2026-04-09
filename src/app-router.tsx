@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useSyncExternalStore, type ReactNode } from 'react'
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 import { authApi } from '@/api'
@@ -58,7 +58,12 @@ function GuestOnlyRoute({ isAuthenticated, fallbackPath, children }: GuestOnlyRo
 export function AppRouter() {
   const dashboardFallbackPath = appRoutes.find((route) => route.layout === 'dashboard')?.path ?? '/'
   const loginPath = appRoutes.find((route) => route.path === '/login')?.path ?? '/login'
-  const isAuthenticated = Boolean(authApi.getAccessToken())
+  const accessToken = useSyncExternalStore(
+    authApi.subscribeAccessToken,
+    authApi.getAccessToken,
+    () => null
+  )
+  const isAuthenticated = Boolean(accessToken)
 
   return (
     <BrowserRouter>

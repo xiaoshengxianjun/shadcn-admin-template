@@ -1,6 +1,7 @@
 import { AppRouter } from '@/app-router'
 import { LocaleProvider } from '@/components/locale-provider'
 import { ThemeProvider } from '@/components/theme-provider'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       storageKey="admin-template-theme"
     >
       <LocaleProvider>
-        <AppRouter />
+        <TooltipProvider>
+          <AppRouter />
+        </TooltipProvider>
       </LocaleProvider>
     </ThemeProvider>
   )

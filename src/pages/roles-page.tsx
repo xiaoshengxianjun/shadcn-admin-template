@@ -26,6 +26,7 @@ RolesPage.routeMeta = {
   titleKey: 'menuRoles',
   layout: 'dashboard',
   inMenu: true,
+  menuGroupKey: 'menuPermission',
   order: 3,
   icon: 'ShieldCheck',
 }
