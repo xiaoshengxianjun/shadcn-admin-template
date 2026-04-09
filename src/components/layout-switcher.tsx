@@ -10,6 +10,7 @@ import { LAYOUT_OPTIONS } from '@/types/layout'
 type LayoutSwitcherProps = {
   layoutMode: LayoutMode
   onChange: (layoutMode: LayoutMode) => void
+  panelSide?: 'down' | 'up'
 }
 
 const layoutIconMap = {
@@ -68,11 +69,17 @@ function LayoutPreview({ mode, active }: { mode: LayoutMode; active: boolean }) 
   )
 }
 
-export function LayoutSwitcher({ layoutMode, onChange }: LayoutSwitcherProps) {
+export function LayoutSwitcher({ layoutMode, onChange, panelSide = 'down' }: LayoutSwitcherProps) {
   const { t } = useLocale()
 
   return (
-    <IconDropdown icon={PanelsTopLeft} ariaLabel={t('layout')} title={t('layout')} widthClassName="w-72">
+    <IconDropdown
+      icon={PanelsTopLeft}
+      ariaLabel={t('layout')}
+      title={t('layout')}
+      widthClassName="w-72"
+      panelSide={panelSide}
+    >
       {LAYOUT_OPTIONS.map((item) => {
         const active = item.value === layoutMode
         const ItemIcon = layoutIconMap[item.value]

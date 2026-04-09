@@ -7,12 +7,22 @@ import { Button } from '@/components/ui/button'
 import type { ThemeName } from '@/types/theme'
 import { THEME_OPTIONS } from '@/types/theme'
 
-export function ThemeSwitcher() {
+type ThemeSwitcherProps = {
+  panelSide?: 'down' | 'up'
+}
+
+export function ThemeSwitcher({ panelSide = 'down' }: ThemeSwitcherProps) {
   const { locale, t } = useLocale()
   const { theme, setTheme } = useTheme()
 
   return (
-    <IconDropdown icon={Palette} ariaLabel={t('theme')} title={t('theme')} widthClassName="w-48">
+    <IconDropdown
+      icon={Palette}
+      ariaLabel={t('theme')}
+      title={t('theme')}
+      widthClassName="w-48"
+      panelSide={panelSide}
+    >
       {THEME_OPTIONS.map((item) => {
         const active = theme === item.value
         return (

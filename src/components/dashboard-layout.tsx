@@ -91,6 +91,19 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     </div>
   )
 
+  const sidebarActions = (
+    <div className="border-t border-[hsl(var(--border))] p-2">
+      <div className="flex items-center gap-1">
+        <LayoutSwitcher layoutMode={layoutMode} onChange={setLayoutMode} panelSide="up" />
+        <LocaleSwitcher panelSide="up" />
+        <ThemeSwitcher panelSide="up" />
+        <div className="ml-auto">
+          <UserMenu compact panelSide="up" />
+        </div>
+      </div>
+    </div>
+  )
+
   const renderBrand = (iconOnly: boolean) => (
     <div className="flex h-16 items-center justify-center border-b border-[hsl(var(--border))] px-3">
       {iconOnly ? (
@@ -344,12 +357,10 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <aside className="relative z-30 hidden w-60 shrink-0 overflow-visible border-r border-[hsl(var(--border))] bg-[hsl(var(--card))] md:flex md:flex-col">
           {renderBrand(false)}
           <div className="flex-1 overflow-visible p-2">{renderSidebarNav(false)}</div>
+          {sidebarActions}
         </aside>
         <div className="min-w-0 flex-1">
-          <header className="sticky top-0 z-20 flex h-16 items-center justify-end border-b border-[hsl(var(--border))] bg-[hsl(var(--background)/0.9)] px-4 backdrop-blur md:px-6">
-            {headerActions}
-          </header>
-          <main className="min-w-0 p-4 md:p-6">{children}</main>
+          <main className="min-h-screen min-w-0 p-4 md:p-6">{children}</main>
         </div>
       </div>
     )

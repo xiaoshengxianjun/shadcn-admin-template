@@ -9,6 +9,7 @@ type IconDropdownProps = {
   ariaLabel: string
   title?: string
   widthClassName?: string
+  panelSide?: 'down' | 'up'
   children: ReactNode
 }
 
@@ -17,6 +18,7 @@ export function IconDropdown({
   ariaLabel,
   title,
   widthClassName,
+  panelSide = 'down',
   children,
 }: IconDropdownProps) {
   const [open, setOpen] = useState(false)
@@ -62,7 +64,8 @@ export function IconDropdown({
 
       <div
         className={cn(
-          'absolute top-full left-1/2 z-30 w-full -translate-x-1/2 pt-2 transition-opacity duration-150',
+          'absolute left-1/2 z-30 w-full -translate-x-1/2 transition-opacity duration-150',
+          panelSide === 'down' ? 'top-full pt-2' : 'bottom-full pb-2',
           widthClassName ?? 'w-44',
           open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         )}
