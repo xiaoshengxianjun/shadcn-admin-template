@@ -86,12 +86,13 @@ const LoginPage: PageComponent = () => {
         <div className="login-gradient-pulse absolute top-1/2 left-1/2 h-112 w-md -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--primary)/0.28),transparent_65%)] blur-3xl" />
       </div>
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 py-6">
-        <div className="flex justify-end gap-2">
-          <LocaleSwitcher />
-          <ThemeSwitcher />
-        </div>
+      {/* 相对视口贴右上角：避免受 max-w 内容区限制；PC 上更靠边角 */}
+      <div className="absolute top-3 right-3 z-20 flex gap-1 sm:top-4 sm:right-4 md:top-4 md:right-4 lg:top-5 lg:right-5">
+        <LocaleSwitcher />
+        <ThemeSwitcher />
+      </div>
 
+      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-6 pt-14 pb-6 sm:pt-16 md:pt-16 lg:pt-[4.25rem]">
         <div className="grid flex-1 items-center gap-8 py-8 lg:grid-cols-2">
           <section className="login-gradient-flow relative hidden h-full min-h-[540px] overflow-hidden rounded-3xl border border-[hsl(var(--border))] bg-[linear-gradient(140deg,hsl(var(--background))_4%,hsl(var(--primary)/0.2)_44%,hsl(var(--accent)/0.3)_100%)] p-10 lg:flex lg:flex-col lg:justify-between">
             <div className="login-gradient-pulse absolute inset-0 bg-[radial-gradient(circle_at_16%_20%,hsl(var(--primary)/0.34),transparent_42%),radial-gradient(circle_at_82%_76%,hsl(var(--accent)/0.3),transparent_46%)]" />

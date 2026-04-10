@@ -10,6 +10,12 @@ export const enUSMessages: Record<MessageKey, string> = {
   menuRoles: 'Roles & Permissions',
   menuSettings: 'System Settings',
   menuPlaceholder: 'Coming soon',
+  settingsPageDescription: 'Manage system preferences in one place. Changes take effect immediately.',
+  settingsLanguageDescription: 'Set the display language of the interface.',
+  settingsThemeDescription: 'Set the color style of the system theme.',
+  settingsLayoutDescription: 'Set the admin navigation layout mode.',
+  settingsImmediateEffect:
+    'Note: settings are applied immediately and persisted in the current browser automatically.',
   language: 'Language',
   theme: 'Theme',
   layout: 'Layout',

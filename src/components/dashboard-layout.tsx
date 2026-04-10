@@ -92,8 +92,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   )
 
   const sidebarActions = (
-    <div className="border-t border-[hsl(var(--border))] p-2">
-      <div className="flex items-center gap-1">
+    <div className="relative z-50 shrink-0 overflow-visible border-t border-[hsl(var(--border))] p-2">
+      <div className="flex items-center gap-1 overflow-visible">
         <LayoutSwitcher layoutMode={layoutMode} onChange={setLayoutMode} panelSide="up" />
         <LocaleSwitcher panelSide="up" />
         <ThemeSwitcher panelSide="up" />
