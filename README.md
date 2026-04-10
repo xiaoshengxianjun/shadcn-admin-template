@@ -17,6 +17,24 @@
 - 多语言切换（中文 / 英文）
 - 基础 UI 组件封装（Button、Card、Input、Label、Badge 等）
 
+## 界面预览
+
+以下为仓库 `public/` 目录中的界面截图示例（登录页、首页）。
+
+### 登录页
+
+|  |  |
+| --- | --- |
+| ![登录页 1](./public/login1.png) | ![登录页 2](./public/login2.png) |
+| ![登录页 3](./public/login3.png) | ![登录页 4](./public/login4.png) |
+| ![登录页 5](./public/login5.png) | ![登录页 6](./public/login6.png) |
+
+### 首页
+
+|  |  |
+| --- | --- |
+| ![首页示例一](./public/home1.png) | ![首页示例二](./public/home2.png) |
+
 ## 技术栈
 
 - React 19
